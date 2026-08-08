@@ -4,4 +4,6 @@ print("AI Investment Company")
 
 analyst = FundamentalAnalyst()
 
-analyst.analyse("Microsoft")
+result = analyst.analyse("Microsoft")
+
+print(result)

@@ -1,3 +1,6 @@
 class FundamentalAnalyst:
     def analyse(self, company):
-        print("Analysing company:", company)
+        return {
+            "company": company,
+            "conclusion": "Bullish"
+        }
