@@ -1,8 +1,6 @@
-print("AI Investment Company")
+from agents.fundamental import FundamentalAnalyst
 
-class FundamentalAnalyst:
-    def analyse(self, company):
-        print("Analysing company:", company)
+print("AI Investment Company")
 
 analyst = FundamentalAnalyst()
 
