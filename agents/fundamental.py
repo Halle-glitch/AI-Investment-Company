@@ -1,6 +1,7 @@
 class FundamentalAnalyst:
     def analyse(self, company, revenue_growth, profit_margin, debt):
-        conclusion = "0"
+
+        conclusion = ""
         if revenue_growth > 0 and profit_margin > 10 and debt < 50:
             conclusion = "Bullish"
         elif revenue_growth < 0 and profit_margin < 10 and debt > 50:
@@ -8,13 +9,22 @@ class FundamentalAnalyst:
         else:
             conclusion = "Neutral"
 
-        
+        reason = ""
+        if revenue_growth > 0 and profit_margin > 10 and debt < 50:
+            reason = "Strong growth, healthy margins and manageable debt."
+        elif revenue_growth < 0 and profit_margin < 10 and debt > 50:
+            reason = "Negative growth, weak margins and high debt."
+        else:
+            reason = "Mixed financial indicators."
+
+
         return {
             "company": company,
             "revenue_growth": revenue_growth,
             "profit_margin": profit_margin,
             "debt": debt,
-            "conclusion": conclusion  
+            "conclusion": conclusion,
+            "reason": reason  
         }
 
 
