@@ -1,5 +1,5 @@
 class FundamentalAnalyst:
-    def analyse(self, company, revenue_growth, profit_margin, debt):
+    def analyse(self, company, revenue_growth, profit_margin, debt, eps_growth):
 
 
         if debt < 30:
@@ -22,8 +22,10 @@ class FundamentalAnalyst:
 
 
         reason = ""
-        if revenue_growth > 0 and profit_margin > 10 and debt < 50:
+        if revenue_growth > 0 and profit_margin > 10 and debt < 50 and eps_growth > 0:
             reason = "Strong growth, healthy margins and manageable debt."
+        elif revenue_growth > 0 and profit_margin > 10 and debt < 50 and eps_growth < 0:
+            reason = "Strong fundamentals despite negative EPS growth."
         elif revenue_growth < 0 and profit_margin < 10 and debt > 50:
             reason = "Negative growth, weak margins and high debt."
         else:
@@ -35,6 +37,7 @@ class FundamentalAnalyst:
             "revenue_growth": revenue_growth,
             "profit_margin": profit_margin,
             "debt": debt,
+            "eps_growth": eps_growth,
             "risk_level": risk_level,
             "reason": reason,
             "conclusion": conclusion
