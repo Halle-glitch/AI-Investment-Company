@@ -51,11 +51,13 @@ class FundamentalAnalyst:
 
         
         reason = ""
-        if revenue_growth > 0 and profit_margin > 10 and debt < 50 and eps_growth > 0:
+        if strong and eps_growth > 0:         
             reason = "Strong growth, healthy margins and manageable debt."
-        elif revenue_growth > 0 and profit_margin > 10 and debt < 50 and eps_growth < 0:
+        elif strong and eps_growth < 0:
             reason = "Strong fundamentals despite negative EPS growth."
-        elif revenue_growth < 0 and profit_margin < 10 and debt > 50:
+        elif strong and eps_growth == 0:
+            reason = "Strong fundamentals with stable EPS growth."
+        elif weak:
             reason = "Negative growth, weak margins and high debt."
         else:
             reason = "Mixed financial indicators."
