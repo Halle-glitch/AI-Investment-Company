@@ -47,7 +47,7 @@ class FundamentalAnalyst:
             #conclusion = "Neutral"
         #else:
            # onclusion = "Neutral" 
-
+        elif strong and eps_growth == 0:
 
         
         reason = ""
@@ -55,7 +55,7 @@ class FundamentalAnalyst:
             reason = "Strong growth, healthy margins and manageable debt."
         elif strong and eps_growth < 0:
             reason = "Strong fundamentals despite negative EPS growth."
-        elif strong and eps_growth == 0:
+
             reason = "Strong fundamentals with stable EPS growth."
         elif weak:
             reason = "Negative growth, weak margins and high debt."
