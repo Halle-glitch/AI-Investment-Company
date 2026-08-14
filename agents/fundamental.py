@@ -12,14 +12,14 @@ class FundamentalAnalyst:
             return False
 
     def analyse(self, company, revenue_growth, profit_margin, debt, eps_growth):
-
-        if debt < 30:
+        
+        if debt < 30 and profit_margin > 5:
             risk_level = "Low risk"
 
-        elif debt >= 30 and debt <= 50:
-            risk_level = "Medium risk"
-        else:
+        elif debt > 50 or profit_margin < 5:
             risk_level = "High risk"
+        else:
+            risk_level = "Medium risk"
 
 
         strong = self.strong_fundamentals(revenue_growth, profit_margin, debt)
@@ -47,15 +47,17 @@ class FundamentalAnalyst:
             #conclusion = "Neutral"
         #else:
            # onclusion = "Neutral" 
-        elif strong and eps_growth == 0:
+        #elif strong and eps_growth == 0:
 
         
         reason = ""
-        if strong and eps_growth > 0:         
+        if strong and risk_level == "High risk":
+            reason = "Fundamentals are strong, but risk is high."
+        elif strong and eps_growth > 0:         
             reason = "Strong growth, healthy margins and manageable debt."
         elif strong and eps_growth < 0:
             reason = "Strong fundamentals despite negative EPS growth."
-
+        elif strong and eps_growth == 0:
             reason = "Strong fundamentals with stable EPS growth."
         elif weak:
             reason = "Negative growth, weak margins and high debt."

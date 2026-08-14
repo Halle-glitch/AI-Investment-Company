@@ -4,15 +4,13 @@ print("AI Investment Company")
 
 analyst = FundamentalAnalyst()
 
-result = analyst.analyse("Microsoft", 12, 15, 20, -5)
-result1 = analyst.analyse("Microsoft", -5, 5, 70,0)
-result2 = analyst.analyse("Microsoft", 12, 5, 30,0)
-result3 = analyst.analyse("Microsoft", 12, 15, 70,0)
-result4 = analyst.analyse("Microsoft", 12, 15, 20, 0)
-print(result)
-print(result1)
-print(result2)
-print(result3)
-print(result4)
+resultA = analyst.analyse("Company A", 15, 20, 20, 10)
+resultB = analyst.analyse("Company B", -8, 3, 70, -10)
+resultC = analyst.analyse("Company C", 12, 5, 30, 0)
+resultD = analyst.analyse("Company D", 5, 12, 60, 8)
 
+print(resultA)
+print(resultB)
+print(resultC)
+print(resultD)
 
