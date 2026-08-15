@@ -1,12 +1,12 @@
 class FundamentalAnalyst:
-    def strong_fundamentals(self, revenue_growth, profit_margin, debt):
-        if revenue_growth > 0 and profit_margin > 10 and debt < 50:
+    def strong_fundamentals(self, revenue_growth, profit_margin):
+        if revenue_growth > 0 and profit_margin > 10:
             return True
         else:
             return False
 
-    def weak_fundamentals(self, revenue_growth, profit_margin, debt):
-        if revenue_growth < 0 and profit_margin < 10 and debt > 50:
+    def weak_fundamentals(self, revenue_growth, profit_margin):
+        if revenue_growth < 0 and profit_margin < 10:
             return True
         else:
             return False
@@ -22,18 +22,15 @@ class FundamentalAnalyst:
             risk_level = "Medium risk"
 
 
-        strong = self.strong_fundamentals(revenue_growth, profit_margin, debt)
-        weak = self.weak_fundamentals(revenue_growth, profit_margin, debt)
+        strong = self.strong_fundamentals(revenue_growth, profit_margin)
+        weak = self.weak_fundamentals(revenue_growth, profit_margin)
 
         if strong and risk_level == "High risk":
             conclusion = "Neutral"
-
         elif strong:
             conclusion = "Bullish"
-
         elif weak:
             conclusion = "Bearish"
-
         else:
             conclusion = "Neutral"
             
@@ -59,6 +56,10 @@ class FundamentalAnalyst:
             reason = "Strong fundamentals despite negative EPS growth."
         elif strong and eps_growth == 0:
             reason = "Strong fundamentals with stable EPS growth."
+        elif revenue_growth < 0 and profit_margin > 10 and risk_level == "High risk":
+            reason = "Negative growth, healthy profit margin and high debt."     
+        elif revenue_growth < 0 and profit_margin > 10 and risk_level == "Low risk":
+            reason = "Negative growth, healthy profit margin and low debt."
         elif weak:
             reason = "Negative growth, weak margins and high debt."
         else:
