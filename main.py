@@ -1,4 +1,5 @@
 from agents.fundamental import FundamentalAnalyst
+from agents.seasonality import SeasonalityAnalyst
 
 print("AI Investment Company")
 
@@ -17,3 +18,13 @@ print(resultC)
 print(resultD)
 print(resultE)
 print(resultF)
+print("")
+print("")
+print("")
+print("")
+
+analyst = SeasonalityAnalyst()
+
+result = analyst.analyse("Company A", "September", [-4.2, 3.1, -9.3, 2.8, -1.5])
+
+print(result)
