@@ -23,8 +23,90 @@ print("")
 print("")
 print("")
 
+
 analyst = SeasonalityAnalyst()
 
-result = analyst.analyse("Company A", "September", [-4.2, 3.1, -9.3, 2.8, -1.5])
+months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+]
 
-print(result)
+results = []
+
+for month in months:
+    result = analyst.analyse("Company A", month)
+    results.append(result)
+print(results)
+
+
+
+best_month = None
+
+for result in results:
+    if best_month is None or result["average_return"] > best_month["average_return"]:
+        best_month = result
+
+
+worst_month = None
+
+for result in results:
+    if worst_month is None or result["average_return"] < worst_month["average_return"]:
+        worst_month = result
+
+
+highest_return = None
+
+for result in results:
+    if highest_return is None or result["average_return"] > highest_return["average_return"]:
+        highest_return = result
+
+
+lowest_return = None
+
+for result in results:
+    if lowest_return is None or result["average_return"] < lowest_return["average_return"]:
+        lowest_return = result        
+
+
+for result in results:
+
+    return_score = (
+        (result["average_return"] - lowest_return["average_return"])
+        /
+        (highest_return["average_return"] - lowest_return["average_return"])
+    ) * 100
+
+    consistency_score = result["positive_year_percentage"]
+
+    stability_score = min(100,max(0, 100 - (result["volatility"] * 10)))
+
+    seasonality_score = ((return_score * 0.40) + (consistency_score * 0.40) + (stability_score * 0.20))
+    
+    result["return_score"] = return_score
+    result["consistency_score"] = consistency_score
+    result["stability_score"] = stability_score
+    result["seasonality_score"] = seasonality_score
+
+    print(
+    result["month"],
+    "Return:", round(return_score, 2),
+    "Consistency:", round(consistency_score, 2),
+    "Stability:", round(stability_score, 2),
+    "Score:", round(seasonality_score, 2)
+)
+
+
+print("Best month:", best_month["month"])
+print("Worst month:", worst_month["month"])
+print("Highest return:", highest_return)
+print("Lowest return:", lowest_return)

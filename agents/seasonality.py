@@ -1,8 +1,10 @@
 import statistics
-
+from data.seasonality_data import seasonality_data
 
 class SeasonalityAnalyst:
-    def analyse(self, company, month, historical_returns):
+    def analyse(self, company, month):
+        historical_returns = seasonality_data[month]
+
         average_return = sum(historical_returns) / len(historical_returns)
 
         positive_years = 0 
