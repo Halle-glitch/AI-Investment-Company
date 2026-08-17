@@ -1,4 +1,3 @@
-from agents.fundamental import FundamentalAnalyst
 from agents.seasonality import SeasonalityAnalyst
 
 
@@ -34,5 +33,11 @@ for month in months:
 
 # Calculate the seasonality scores
 results = analyst.calculate_scores(results)
+
+best_month = analyst.find_best_month(results)
+worst_month = analyst.find_worst_month(results)
+
+print("Best month:", best_month["month"])
+print("Worst month:", worst_month["month"])
 
 print(results)

@@ -43,3 +43,54 @@ class SeasonalityAnalyst:
             "negative_year_percentage": negative_year_percentage,
             "volatility": volatility
         }
+
+
+    def calculate_scores(self, results):
+        highest_return = None
+        lowest_return = None
+
+        for result in results:
+            if highest_return is None or result["average_return"] > highest_return["average_return"]:
+                highest_return = result
+
+            if lowest_return is None or result["average_return"] < lowest_return["average_return"]:
+                lowest_return = result
+
+        for result in results:
+
+            return_score = ((result["average_return"] - lowest_return["average_return"]) / (highest_return["average_return"] - lowest_return["average_return"])) * 100
+
+            consistency_score = result["positive_year_percentage"]
+
+            stability_score = min(100,max(0, 100 - (result["volatility"] * 10)))
+
+            seasonality_score = ((return_score * 0.40)+ (consistency_score * 0.40)+ (stability_score * 0.20))
+
+            result["return_score"] = return_score
+            result["consistency_score"] = consistency_score
+            result["stability_score"] = stability_score
+            result["seasonality_score"] = seasonality_score
+
+        return results
+
+
+    def find_best_month(self, results):
+
+        best_month = None
+
+        for result in results:
+            if best_month is None or result["average_return"] > best_month["average_return"]:
+                best_month = result
+
+        return best_month
+
+
+    def find_worst_month(self, results):
+
+        worst_month = None
+
+        for result in results:
+            if worst_month is None or result["average_return"] < worst_month["average_return"]:
+                worst_month = result
+
+        return worst_month

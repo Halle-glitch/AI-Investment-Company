@@ -12,3 +12,5 @@ seasonality_data = {
     "November": [1, 7, 5, 3, 6],
     "December": [0.2, -3, 5, 3, 15]
 }
+
+

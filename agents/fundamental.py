@@ -17,7 +17,7 @@ class FundamentalAnalyst:
     def analyse(self, company, revenue_growth, profit_margin, debt, eps_growth):
 
         # Determine the company's risk level
-        if debt < 30 and profit_margin > 5:
+        if debt < 30 and profit_margin > 5: 
             risk_level = "Low risk"
 
         elif debt > 50 or profit_margin < 5:
