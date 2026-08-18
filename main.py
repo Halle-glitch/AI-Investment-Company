@@ -40,4 +40,11 @@ worst_month = analyst.find_worst_month(results)
 print("Best month:", best_month["month"])
 print("Worst month:", worst_month["month"])
 
-print(results)
+for result in results:
+    print(
+        result["month"],
+        "Average:", round(result["average_return"], 2),
+        "Consistency:", round(result["consistency_score"], 2),
+        "Stability:", round(result["stability_score"], 2),
+        "Score:", round(result["seasonality_score"], 2)
+    )

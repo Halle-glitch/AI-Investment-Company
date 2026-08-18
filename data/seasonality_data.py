@@ -1,6 +1,6 @@
 seasonality_data = {
     "January": [-1, 3, 4, 7, 6],
-    "February": [0.2, 3, 5, 3],
+    "February": [0.2, 3, 5, 3, 6],
     "March": [5, 3, 5, 3, 4],
     "April": [0.2, 3, 5, 3, 4],
     "May": [4, 2, 3, 1, 4],
