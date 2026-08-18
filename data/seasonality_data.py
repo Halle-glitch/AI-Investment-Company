@@ -1,4 +1,5 @@
 seasonality_data = {
+    "Company A":{
     "January": [-1, 3, 4, 7, 6],
     "February": [0.2, 3, 5, 3, 6],
     "March": [5, 3, 5, 3, 4],
@@ -10,7 +11,21 @@ seasonality_data = {
     "September": [1, 3, -2, 3, -1],
     "October": [0.8, -3, 5, 3, 4],
     "November": [1, 7, 5, 3, 6],
-    "December": [0.2, -3, 5, 3, 15]
+    "December": [0.2, -3, 5, 3, 15],
+},
+
+    "Company B":{
+    "January": [-2, 2, 3, 5, 6],
+    "February": [6, 1, 10, 3, 6],
+    "March": [5, 3, 5, 3, 4],
+    "April": [0.2, 3, 5, 3, 4],
+    "May": [4, 2, 3, 3, 4],
+    "June": [6, 23, -5, 23, 14],
+    "July": [5, 3, 4, 3, 4],
+    "August": [4, 13, 9, 10, -2],
+    "September": [12, 13, -2, 13, -1],
+    "October": [0.8, -13, 9, 13, 4],
+    "November": [11, 7, 5, 3, 6],
+    "December": [0.2, -3, 8, 3, 11],
 }
-
-
+}

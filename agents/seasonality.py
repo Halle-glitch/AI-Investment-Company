@@ -8,7 +8,7 @@ class SeasonalityAnalyst:
     def analyse(self, company, month):
 
         # Get the historical returns for the selected month
-        historical_returns = seasonality_data[month]
+        historical_returns = seasonality_data[company][month]
 
         # Calculate the average return
         average_return = sum(historical_returns) / len(historical_returns)
@@ -109,10 +109,11 @@ class SeasonalityAnalyst:
 
         best_month = self.find_best_month(results)
         worst_month = self.find_worst_month(results)
-        
+
         return {
             "results": results,
             "best_month": best_month,
-            "worst_month": worst_month
+            "worst_month": worst_month,
+            "company": company,
             }
     
