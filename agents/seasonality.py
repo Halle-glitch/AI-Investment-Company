@@ -94,3 +94,25 @@ class SeasonalityAnalyst:
                 worst_month = result
 
         return worst_month
+
+
+    def analyse_company(self, company):
+
+        months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+        results = []
+
+        for month in months:
+            result = self.analyse(company, month)
+            results.append(result)
+
+        results = self.calculate_scores(results)
+
+        best_month = self.find_best_month(results)
+        worst_month = self.find_worst_month(results)
+        
+        return {
+            "results": results,
+            "best_month": best_month,
+            "worst_month": worst_month
+            }
+    

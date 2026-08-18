@@ -7,35 +7,11 @@ print("AI Investment Company")
 # Seasonality analysis
 analyst = SeasonalityAnalyst()
 
-months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-]
+analysis = analyst.analyse_company("Company A")
 
-
-# Analyse all months
-results = []
-
-for month in months:
-    result = analyst.analyse("Company A", month)
-    results.append(result)
-
-
-# Calculate the seasonality scores
-results = analyst.calculate_scores(results)
-
-best_month = analyst.find_best_month(results)
-worst_month = analyst.find_worst_month(results)
+results = analysis["results"]
+best_month = analysis["best_month"]
+worst_month = analysis["worst_month"]
 
 print("Best month:", best_month["month"])
 print("Worst month:", worst_month["month"])
@@ -48,3 +24,9 @@ for result in results:
         "Stability:", round(result["stability_score"], 2),
         "Score:", round(result["seasonality_score"], 2)
     )
+
+print("Best month:", best_month["month"])
+print("Best score:", round(best_month["seasonality_score"], 2))
+
+print("Worst month:", worst_month["month"])
+print("Worst score:", round(worst_month["seasonality_score"], 2))
