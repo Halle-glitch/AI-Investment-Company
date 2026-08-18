@@ -79,7 +79,7 @@ class SeasonalityAnalyst:
         best_month = None
 
         for result in results:
-            if best_month is None or result["average_return"] > best_month["average_return"]:
+            if best_month is None or result["seasonality_score"] > best_month["seasonality_score"]:
                 best_month = result
 
         return best_month
@@ -90,7 +90,7 @@ class SeasonalityAnalyst:
         worst_month = None
 
         for result in results:
-            if worst_month is None or result["average_return"] < worst_month["average_return"]:
+            if worst_month is None or result["seasonality_score"] < worst_month["seasonality_score"]:
                 worst_month = result
 
         return worst_month
