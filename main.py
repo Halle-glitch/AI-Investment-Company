@@ -8,12 +8,20 @@ print("AI Investment Company")
 analyst = SeasonalityAnalyst()
 
 
-# Analyse both companies
-analysis_A = analyst.analyse_company("Company A")
-analysis_B = analyst.analyse_company("Company B")
+companies = [
+    "Company A",
+    "Company B",
+    "Company C",
+    "Company D",
+    "Company E"
+]
 
+analyses = []
 
-analyses = [analysis_A, analysis_B]
+for company in companies:
+    analysis = analyst.analyse_company(company)
+    analyses.append(analysis)
+
 
 for analysis in analyses:
 
