@@ -98,22 +98,31 @@ class SeasonalityAnalyst:
 
     def analyse_company(self, company):
 
-        months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-        results = []
+        months = [
+        "January", "February", "March", "April",
+        "May", "June", "July", "August",
+        "September", "October", "November", "December"
+        ]
 
-        for month in months:
-            result = self.analyse(company, month)
-            results.append(result)
+        try:
+            results = []
 
-        results = self.calculate_scores(results)
+            for month in months:
+                result = self.analyse(company, month)
+                results.append(result)
 
-        best_month = self.find_best_month(results)
-        worst_month = self.find_worst_month(results)
+            results = self.calculate_scores(results)
 
-        return {
-            "results": results,
-            "best_month": best_month,
-            "worst_month": worst_month,
-            "company": company,
+            best_month = self.find_best_month(results)
+            worst_month = self.find_worst_month(results)
+
+            return {
+                "company": company,
+                "results": results,
+                "best_month": best_month,
+                "worst_month": worst_month
             }
-    
+
+        except KeyError:
+            print("Company not found:", company)
+            return None

@@ -1,29 +1,7 @@
 from agents.seasonality import SeasonalityAnalyst
 
 
-print("AI Investment Company")
-
-
-# Seasonality analysis
-analyst = SeasonalityAnalyst()
-
-
-companies = [
-    "Company A",
-    "Company B",
-    "Company C",
-    "Company D",
-    "Company E"
-]
-
-analyses = []
-
-for company in companies:
-    analysis = analyst.analyse_company(company)
-    analyses.append(analysis)
-
-
-for analysis in analyses:
+def print_seasonality_analysis(analysis):
 
     company = analysis["company"]
     results = analysis["results"]
@@ -43,3 +21,25 @@ for analysis in analyses:
             "Stability:", round(result["stability_score"], 2),
             "Score:", round(result["seasonality_score"], 2)
         )
+
+
+print("AI Investment Company")
+
+analyst = SeasonalityAnalyst()
+
+companies = [
+    "Company A",
+    "Company B",
+    "Company C"
+]
+
+analyses = []
+
+for company in companies:
+    analysis = analyst.analyse_company(company)
+
+    if analysis is not None:
+        analyses.append(analysis)
+
+for analysis in analyses:
+    print_seasonality_analysis(analysis)
