@@ -1,4 +1,3 @@
-
 class DecisionAgent:
 
     def decide(self, fundamental, seasonality):
@@ -8,5 +7,9 @@ class DecisionAgent:
 
         if conclusion == "Bullish" and season >= 60:
             return "BUY"
+
+        elif conclusion == "Bearish" and season < 60:
+            return "SELL"
+
         else:
             return "HOLD"

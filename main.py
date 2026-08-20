@@ -25,14 +25,11 @@ def print_seasonality_analysis(analysis):
             "Score:", round(result["seasonality_score"], 2)
         )
 
-
 print("AI Investment Company")
-
 
 fundamental_analyst = FundamentalAnalyst()
 seasonality_analyst = SeasonalityAnalyst()
 decision_agent = DecisionAgent()
-
 
 companies = [
     "Company A",
