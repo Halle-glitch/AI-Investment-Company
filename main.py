@@ -1,4 +1,7 @@
 from agents.seasonality import SeasonalityAnalyst
+from agents.fundamental import FundamentalAnalyst
+from agents.decision import DecisionAgent
+
 
 
 def print_seasonality_analysis(analysis):
@@ -25,23 +28,47 @@ def print_seasonality_analysis(analysis):
 
 print("AI Investment Company")
 
-analyst = SeasonalityAnalyst()
+
+fundamental_analyst = FundamentalAnalyst()
+seasonality_analyst = SeasonalityAnalyst()
+decision_agent = DecisionAgent()
+
 
 companies = [
     "Company A",
-    "Company B",
-    "Company C"
+    "Company B"
 ]
 
 analyses = []
 
 for company in companies:
-    analysis = analyst.analyse_company(company)
 
-    if analysis is not None:
-        analyses.append(analysis)
-    else:
-        print("Company not found:", company)
+    seasonality_result = seasonality_analyst.analyse_company(company)
+    if company == "Company A":
+        fundamental_result = fundamental_analyst.analyse("Company A", 15, 20, 20, 10)
+
+    elif company == "Company B":
+        fundamental_result = fundamental_analyst.analyse("Company B", -8, 3, 70, -10)
+
+    company_analysis = {
+        "company": company,
+        "seasonality": seasonality_result,
+        "fundamental": fundamental_result
+    }
+
+    analyses.append(company_analysis)
 
 for analysis in analyses:
-    print_seasonality_analysis(analysis)
+
+    fundamental = analysis["fundamental"]
+    seasonality = analysis["seasonality"]
+    company = analysis["company"]
+
+    decision = decision_agent.decide(fundamental, seasonality)
+    
+
+    print("")
+    print(company)
+    print("Fundamental:", fundamental["conclusion"])
+    print("Best month:", seasonality["best_month"]["month"])
+    print("Decision:", decision)
