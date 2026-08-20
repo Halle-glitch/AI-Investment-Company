@@ -40,6 +40,8 @@ for company in companies:
 
     if analysis is not None:
         analyses.append(analysis)
+    else:
+        print("Company not found:", company)
 
 for analysis in analyses:
     print_seasonality_analysis(analysis)

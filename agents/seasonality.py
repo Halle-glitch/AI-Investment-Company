@@ -124,5 +124,4 @@ class SeasonalityAnalyst:
             }
 
         except KeyError:
-            print("Company not found:", company)
             return None
