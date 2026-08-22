@@ -62,10 +62,10 @@ for analysis in analyses:
     company = analysis["company"]
 
     decision = decision_agent.decide(fundamental, seasonality)
-    
 
     print("")
     print(company)
     print("Fundamental:", fundamental["conclusion"])
     print("Best month:", seasonality["best_month"]["month"])
-    print("Decision:", decision)
+    print("Decision:", decision["decision"])
+    print("Reason:", decision["reason"])
