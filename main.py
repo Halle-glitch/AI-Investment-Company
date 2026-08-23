@@ -66,6 +66,7 @@ for analysis in analyses:
     print("")
     print(company)
     print("Fundamental:", fundamental["conclusion"])
+    print("Fundamental Score:", fundamental["fundamental_score"])
     print("Best month:", seasonality["best_month"]["month"])
     print("Decision:", decision["decision"])
     print("Score:", decision["score"])

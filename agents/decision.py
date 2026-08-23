@@ -5,6 +5,7 @@ class DecisionAgent:
         conclusion = fundamental["conclusion"]
         season = seasonality["best_month"]["seasonality_score"]
         risk = fundamental["risk_level"]
+        fundamental_score = fundamental["fundamental_score"]
 
         risk_score = 0
 
@@ -13,7 +14,7 @@ class DecisionAgent:
         elif risk == "High risk":
             risk_score = 0
 
-        decision_score = (season * 0.6) + (risk_score * 0.4)
+        decision_score = (fundamental_score * 0.4 + season * 0.4 + risk_score * 0.2)
 
         if conclusion == "Bullish" and decision_score >= 60:
             return {

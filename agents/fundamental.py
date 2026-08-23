@@ -16,6 +16,20 @@ class FundamentalAnalyst:
 
     def analyse(self, company, revenue_growth, profit_margin, debt, eps_growth):
 
+        fundamental_score = 0
+
+        if revenue_growth > 10:
+            fundamental_score += 25
+
+        if profit_margin > 10:
+            fundamental_score += 25
+
+        if debt < 30:
+            fundamental_score += 25
+
+        if eps_growth > 5:
+            fundamental_score += 25
+
         # Determine the company's risk level
         if debt < 30 and profit_margin > 5: 
             risk_level = "Low risk"
@@ -89,6 +103,7 @@ class FundamentalAnalyst:
             "debt": debt,
             "eps_growth": eps_growth,
             "risk_level": risk_level,
+            "fundamental_score": fundamental_score,
             "reason": reason,
-            "conclusion": conclusion
+            "conclusion": conclusion 
         }
