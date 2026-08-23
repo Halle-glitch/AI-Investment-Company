@@ -25,6 +25,27 @@ def print_seasonality_analysis(analysis):
             "Score:", round(result["seasonality_score"], 2)
         )
 
+def print_investment_report(analysis):
+
+    company = analysis["company"]
+    fundamental = analysis["fundamental"]
+    seasonality = analysis["seasonality"]
+    decision = analysis["decision"]
+
+    print("")
+    print("==============================")
+    print(company)
+    print("==============================")
+    print("Fundamental:", fundamental["conclusion"])
+    print("Fundamental Score:", fundamental["fundamental_score"])
+    print("Best Month:", seasonality["best_month"]["month"])
+    print("Seasonality Score:", round(
+        seasonality["best_month"]["seasonality_score"], 2
+    ))
+    print("Decision Score:", decision["score"])
+    print("Decision:", decision["decision"])
+    print("Reason:", decision["reason"])
+
 print("AI Investment Company")
 
 fundamental_analyst = FundamentalAnalyst()
@@ -41,34 +62,30 @@ analyses = []
 for company in companies:
 
     seasonality_result = seasonality_analyst.analyse_company(company)
+
     if company == "Company A":
-        fundamental_result = fundamental_analyst.analyse("Company A", 15, 20, 20, 10)
+        fundamental_result = fundamental_analyst.analyse(
+            "Company A", 15, 20, 20, 10
+        )
 
     elif company == "Company B":
-        fundamental_result = fundamental_analyst.analyse("Company B", -8, 3, 70, -10)
+        fundamental_result = fundamental_analyst.analyse(
+            "Company B", -8, 3, 70, -10
+        )
+
+    decision = decision_agent.decide(
+        fundamental_result,
+        seasonality_result
+    )
 
     company_analysis = {
         "company": company,
         "seasonality": seasonality_result,
-        "fundamental": fundamental_result
+        "fundamental": fundamental_result,
+        "decision": decision
     }
 
     analyses.append(company_analysis)
 
 for analysis in analyses:
-
-    fundamental = analysis["fundamental"]
-    seasonality = analysis["seasonality"]
-    company = analysis["company"]
-
-    decision = decision_agent.decide(fundamental, seasonality)
-
-    print("")
-    print(company)
-    print("Fundamental:", fundamental["conclusion"])
-    print("Fundamental Score:", fundamental["fundamental_score"])
-    print("Best month:", seasonality["best_month"]["month"])
-    print("Decision:", decision["decision"])
-    print("Score:", decision["score"])
-    print("Reason:", decision["reason"])
-    
+    print_investment_report(analysis)
