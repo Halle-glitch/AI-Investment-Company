@@ -1,5 +1,5 @@
 # AI Investment Company
-
+## Version 1.0 — Complete
 A Python project that analyses companies using multiple investment agents.
 
 ## Current Agents
