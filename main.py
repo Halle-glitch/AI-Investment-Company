@@ -6,27 +6,6 @@ from agents.ranking import RankingAgent
 from agents.recommendation import RecommendationAgent
 
 
-def print_seasonality_analysis(analysis):
-
-    company = analysis["company"]
-    results = analysis["results"]
-    best_month = analysis["best_month"]
-    worst_month = analysis["worst_month"]
-
-    print("")
-    print(company)
-    print("Best month:", best_month["month"])
-    print("Worst month:", worst_month["month"])
-
-    for result in results:
-        print(
-            result["month"],
-            "Average:", round(result["average_return"], 2),
-            "Consistency:", round(result["consistency_score"], 2),
-            "Stability:", round(result["stability_score"], 2),
-            "Score:", round(result["seasonality_score"], 2)
-        )
-
 def print_investment_report(analysis):
 
     company = analysis["company"]
@@ -44,12 +23,14 @@ def print_investment_report(analysis):
     print("Risk:", risk["risk_level"])
     print("Risk Score:", risk["risk_score"])
     print("Best Month:", seasonality["best_month"]["month"])
-    print("Seasonality Score:", round(
-        seasonality["best_month"]["seasonality_score"], 2
-    ))
+    print(
+        "Seasonality Score:",
+        round(seasonality["best_month"]["seasonality_score"], 2)
+    )
     print("Decision Score:", decision["score"])
     print("Decision:", decision["decision"])
     print("Reason:", decision["reason"])
+
 
 print("AI Investment Company")
 
@@ -59,6 +40,7 @@ decision_agent = DecisionAgent()
 risk_agent = RiskAgent()
 ranking_agent = RankingAgent()
 recommendation_agent = RecommendationAgent()
+
 
 companies = [
     {
@@ -77,13 +59,16 @@ companies = [
     }
 ]
 
+
 analyses = []
 
 for company in companies:
 
     company_name = company["name"]
 
-    seasonality_result = seasonality_analyst.analyse_company(company_name)
+    seasonality_result = seasonality_analyst.analyse_company(
+        company_name
+    )
 
     fundamental_result = fundamental_analyst.analyse(
         company_name,
@@ -102,26 +87,30 @@ for company in companies:
     )
 
     company_analysis = {
-    "company": company_name,
-    "seasonality": seasonality_result,
-    "fundamental": fundamental_result,
-    "risk": risk_result,
-    "decision": decision
+        "company": company_name,
+        "seasonality": seasonality_result,
+        "fundamental": fundamental_result,
+        "risk": risk_result,
+        "decision": decision
     }
 
     analyses.append(company_analysis)
 
+
 for analysis in analyses:
     print_investment_report(analysis)
+
 
 ranked = ranking_agent.rank(analyses)
 
 recommendation = recommendation_agent.recommend(ranked)
 
+
 print("")
 print("==============================")
 print("TOP INVESTMENT")
 print("==============================")
+
 
 if recommendation:
 
@@ -130,5 +119,5 @@ if recommendation:
     print("Score:", recommendation["decision"]["score"])
 
 else:
-    print("No BUY recommendation.")
 
+    print("No BUY recommendation.")

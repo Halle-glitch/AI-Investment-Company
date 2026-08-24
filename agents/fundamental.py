@@ -2,17 +2,11 @@ class FundamentalAnalyst:
 
     # Check if the company has strong fundamentals
     def strong_fundamentals(self, revenue_growth, profit_margin):
-        if revenue_growth > 0 and profit_margin > 10:
-            return True
-        else:
-            return False
+        return revenue_growth > 0 and profit_margin > 10
 
     # Check if the company has weak fundamentals
     def weak_fundamentals(self, revenue_growth, profit_margin):
-        if revenue_growth < 0 and profit_margin < 10:
-            return True
-        else:
-            return False
+        return revenue_growth < 0 and profit_margin < 10
 
     def analyse(self, company, revenue_growth, profit_margin, debt, eps_growth):
 
